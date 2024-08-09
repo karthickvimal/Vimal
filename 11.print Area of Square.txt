@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main()
+ {
+    Float side, area;
+    Printf(“Enter the side length of the square: “);
+    Scanf(“%f”, &side);
+    Area = side * side;
+    Printf(“The area of the square is: %f\n”, area);
+    Return 0;
+}

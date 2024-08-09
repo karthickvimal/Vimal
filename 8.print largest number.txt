@@ -1,0 +1,20 @@
+#include <stdio.h>
+Int main() 
+{
+    int A, B, C;
+    Printf(“Enter three numbers A, Band C: “);
+    Scanf(“%d %d %d”, &A, &B, &C);
+    If (A >= B && A>= C)
+{
+        Printf(“Largest number is: %d”, A);
+}
+    else if (B>= A&& B >= C)
+{
+        Printf(“Largest number is: %d”, B);
+}
+    else
+{
+        Printf(“Largest number is: %d”, C);
+}
+    Return 0;
+}

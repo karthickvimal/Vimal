@@ -1,0 +1,15 @@
+#include <stdio.h>
+Int main() 
+{
+    Int number;
+    Printf(“Enter a number: “);
+    Scanf(“%d”, &number);
+    If (number % 3 == 0 && number % 5 == 0) 
+{
+        Printf(“%d is divisible by both 3 and 5.\n”, number);
+    } else
+ {
+        Printf(“%d is not divisible by both 3 and 5.\n”, number);
+    }
+    Return 0;
+}

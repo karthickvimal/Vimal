@@ -1,0 +1,20 @@
+#include <stdio.h>
+Int main()
+ {
+    Char input;
+    Printf(“Enter a character: “);
+    Scanf(“ %c”, &input);
+    If (isalpha(input))
+ {
+        Printf(“It is an alphabet.\n”);
+    } 
+else if (isdigit(input)) 
+{
+        Printf(“It is a digit.\n”);
+    } 
+else
+ {
+        Printf(“It is a special character.\n”);
+    }
+    Return 0;
+}

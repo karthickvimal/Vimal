@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main()
+{
+    int i,ans=1;
+    int base, power;
+	printf("Enter Base: ");
+	scanf("%d", &base);
+	printf("Enter Power: ");
+	scanf("%d", &power);
+	for(i=1;i<=power;i++)
+	{
+	    ans=ans*base;
+	}
+	printf("Result:%d ^ %d = %d", base,power, ans);
+}

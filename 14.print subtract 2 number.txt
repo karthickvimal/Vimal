@@ -1,0 +1,12 @@
+#include <stdio.h>
+Int main() 
+{
+    int num1, num2, sub;
+    Printf(“Enter first number: “);
+    Scanf(“%d”, &num1);
+    Printf(“Enter second number: “);
+    Scanf(“%d”, &num2);
+    int Sub= num1 - num2;
+    Printf(“Sub: %d\n”, sub);
+    Return 0;
+}

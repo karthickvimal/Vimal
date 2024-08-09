@@ -1,0 +1,25 @@
+#inuclude <stdio.h>
+int main()
+{
+float basic, salary, da, hra;
+Printf(“Enter basic salary of employee:”);
+Scanf (“%f”, & basic);
+if(basic<10000)
+{
+da=basic=0.5;
+Hra = basic=0.2;
+}
+else if (basic <=25000)
+{
+Da=basic=0.6;
+hra=basic=0.3;
+}
+else
+{
+da = basic =0.3;;
+hra = basic =0.4;
+}
+Salary = basic + hra+ da;
+printf (“Salary = %2f”, salary);
+return 0;
+}

@@ -1,0 +1,10 @@
+#include<stdio.h>
+Int main()
+{
+int principal, rate, time, interest; printf (“Enter the principal.”); Scanf(“%d”, &principal);
+Printf(“Enter the rate:”); 
+Scanf (“%d”, & rate);
+Printf(“Enter the time: “);
+Scanf(“%d”, &time);
+Interest=principal *rate* * time /100; printf (“The simple interest is %d”, interest);
+}

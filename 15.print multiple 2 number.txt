@@ -1,0 +1,12 @@
+#include <stdio.h>
+Int main() 
+{
+    int num1, num2, multiple ;
+    Printf(“Enter first number: “);
+    Scanf(“%d”, &num1);
+    Printf(“Enter second number: “);
+    Scanf(“%d”, &num2);
+    Multiple = num1 * num2;
+    Printf(“mult: %d\n”, multiple );
+    Return 0;
+}

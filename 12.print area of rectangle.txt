@@ -1,0 +1,12 @@
+#include <stdio.h>
+int main() 
+{
+    Float length, width;
+    Printf(“Enter the length of the rectangle: “);
+    Scanf(“%f”, &length);
+    Printf(“Enter the width of the rectangle: “);
+    Scanf(“%f”, &width);
+    Float area = length * width;
+    Printf(“The area of the rectangle is: %.2f\n”, area);
+    Return 0;
+}

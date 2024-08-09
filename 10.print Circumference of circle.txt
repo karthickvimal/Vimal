@@ -1,0 +1,10 @@
+#include <stdio.h>
+Int main() 
+{
+    Float radius, circumference;
+    Printf(“Enter the radius of the circle: “);
+    Scanf(“%f”, &radius);
+    Circumference = 2 * 3.14159 * radius;
+    Printf(“The circumference of the circle is: %f\n”, circumference); 
+    Return 0;
+}
