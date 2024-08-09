@@ -1,0 +1,22 @@
+#include<stack>
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	  stack <string> languvage;
+       languvage .push  ("c");
+	   languvage .push  ("c++");
+	   languvage . push ("java");
+	   languvage . push (" Python");
+	  while(! languvage.empty())
+	  {
+  	  	cout<<" the top most languvage is"<<languvage.top()<<endl;
+	  	languvage.pop();
+	  }
+}
+output:
+the top most languvage is Python
+ the top most languvage isjava
+ the top most languvage isc++
+ the top most languvage isc

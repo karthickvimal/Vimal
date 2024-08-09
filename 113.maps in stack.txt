@@ -1,0 +1,37 @@
+#include<iostream>
+#include <map>
+using namespace std;
+int main()
+{
+map<int,string>names;
+names[1]="Vimal";
+names[2]="vadivel";
+names[100]="mukesh";
+names[200]="Block";
+for(auto pair:names)
+{
+    cout<<"key:"<<pair.first<<endl;
+    cout<<"value:"<<pair.second;
+}
+}
+
+
+OR
+
+
+#include<iostream>
+#include <map>
+using namespace std;
+int main()
+{
+  map<char,string>names;
+  names['A']="Vimal";
+  names['B']="vadivel";
+  names['C']="mukesh";
+  names['D']="Block";
+  for(auto pair:names)
+ {
+    cout<<"\nkey:"<<pair.first<<endl;
+    cout<<"value:"<<pair.second;
+ }
+}

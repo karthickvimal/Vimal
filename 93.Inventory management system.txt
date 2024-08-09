@@ -1,0 +1,109 @@
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+class Inventory
+{
+	public:
+		string name;
+		string price;
+		string quantity;
+		Inventory (string n,string p,string q)
+		{
+			name=n;
+			price=p;
+			quantity=q;
+		}
+		void displayDetails()
+		{
+		    cout<<"name:"<<name<<"\nprice:"<<price<<"\nquantity:"<<quantity<<endl;
+		}
+};
+class library
+{
+	public:
+		vector<Inventory>inventories;
+		void addInventory(Inventory& inventory)
+		{
+			inventories.push_back(inventory);
+			cout<<"*****the Inventory details*****\n";
+		}
+		void displayAllInventories()
+		{
+			if(inventories.empty())
+			{
+				cout<<"No Inventory in the shop\n";
+			}
+			else
+			{
+				cout<<"All Inventory in the shop:\n";
+				for(Inventory&inventory: inventories)
+				{
+					inventory.displayDetails();
+					cout<<"-------------------\n";
+				}
+			}
+		}
+		void searchInventoryByname(string name)
+		{
+			bool found=false;
+			for(Inventory&inventory:inventories)
+			{
+				if(inventory.name==name)
+				{
+					inventory.displayDetails();
+					found=true;
+					break;
+				}
+			}
+		if(!found)
+		{
+			cout<<"inventory not found.\n";
+		}
+}
+};
+int main()
+{
+	cout<<"Inventory System\n";
+	library library;
+	while(true)
+	{
+		cout<<"\n[1] Add product\n";
+		cout<<"[2] Display All product\n";
+		cout<<"[3] Search product by Inventory\n";
+		cout<<"[4] Exit\n";
+		cout<<"Enter your choice: ";
+		int choice;
+		cin>>choice;
+		switch(choice)
+		{
+			case 1:
+				{
+					string name,price,quantity;
+					cout<<"Enter product name: ";
+					cin>>name;
+					cout<<"Enter price: ";
+					cin>>price;
+					cout<<"Enter quantity: ";
+					cin>>quantity;
+					Inventory newInventory(name,price,quantity);
+					library.addInventory(newInventory);
+					break;
+				}
+				case 2:
+					library.displayAllInventories();
+					break;
+					case 3:
+						{
+							string searchname;
+							cout<<"Enter product name to search: ";
+							cin>>searchname;
+							library.searchInventoryByname(searchname);
+							break;
+						}
+						case 4:
+							cout<<"exiting the Inventory system.Goodbye!\n";
+		}
+	}
+	return 0;
+}

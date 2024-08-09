@@ -1,0 +1,34 @@
+#include <iostream>
+#include <stack>
+#include <unordered_map>
+
+using namespace std;
+
+void countOccurrences(string& str) {
+    stack<char> charStack;
+    unordered_map<char, int> charCount;
+
+    for (char ch : str) {
+        if (charCount.find(ch) == charCount.end()) {
+            charCount[ch] = 1;
+            charStack.push(ch);
+        } else {
+            charCount[ch]++;
+        }
+    }
+
+    cout << "Character occurrences:\n";
+    while (!charStack.empty()) {
+        char ch = charStack.top();
+        charStack.pop();
+        cout << "'" << ch << "': " << charCount[ch] << " times\n";
+    }
+}
+
+int main() {
+    string inputString;
+    cout << "Enter a string: ";
+    getline(cin, inputString);
+    countOccurrences(inputString);
+    return 0;
+}

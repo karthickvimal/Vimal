@@ -1,0 +1,134 @@
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+class Doctor {
+    string name;
+    string specialist;
+
+public:
+    Doctor(string D, string s) : name(D), specialist(s) {}
+
+    void displayDetails1() {
+        cout << "Name: " << name << " Specialist: " << specialist << endl;
+    }
+};
+
+class Patient {
+public:
+    string name;
+    int age;
+    string disease;
+
+    Patient(string n, int a, string d) : name(n), age(a), disease(d) {}
+
+    void displayDetails2() {
+        cout << "Name: " << name << "\nAge: " << age << "\nDisease: " << disease << endl;
+    }
+};
+
+class HospitalManagementSystem {
+public:
+    vector<Patient> Patients;
+
+    void addPatient(Patient& patient) {
+        Patients.push_back(patient);
+        cout << "Patient added successfully!" << endl;
+    }
+
+    void displayAllPatients() {
+        if (Patients.empty()) {
+            cout << "No patient in the hospital management system." << endl;
+        } else {
+            cout << "All patients in the hospital management system:" << endl;
+            for (Patient& patient : Patients) {
+                patient.displayDetails2();
+                cout << "--------------------------" << endl;
+            }
+        }
+    }
+
+    void searchPatientName(string name) {
+        bool found = false;
+        for (Patient& patient : Patients) {
+            if (patient.name == name) {
+                patient.displayDetails2();
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            cout << "Patient not found." << endl;
+        }
+    }
+
+    void addDoctor(Doctor& doctor) {
+       
+    }
+};
+
+int main() {
+    cout << "Hospital Management system" << endl;
+    HospitalManagementSystem hospitalManagementSystem;
+
+    while (true) {
+        cout << "\n[1] Add Patient details\n";
+        cout << "[2] Display All Patients\n";
+        cout << "[3] Add Doctor details\n";
+        cout << "[4] Search Patient by name\n";
+        cout << "[5] Exit\n";
+        cout << "Enter your choice: ";
+
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                string name, disease;
+                int age;
+                cout << "Enter the patient name: ";
+                cin >> name;
+                cout << "Enter the patient age: ";
+                cin >> age;
+                cout << "Enter the patient disease: ";
+                cin >> disease;
+
+                Patient newPatient(name, age, disease);
+                hospitalManagementSystem.addPatient(newPatient);
+                break;
+            }
+            case 2: {
+                hospitalManagementSystem.displayAllPatients();
+                break;
+            }
+            case 3: {
+                string name, specialist;
+                cout << "Enter the doctor name: ";
+                cin >> name;
+                cout << "Enter the specialist: ";
+                cin >> specialist;
+
+                Doctor newDoctor(name, specialist);
+                hospitalManagementSystem.addDoctor(newDoctor);
+                break;
+            }
+            case 4: {
+                string searchName;
+                cout << "Enter the patient name to search: ";
+                cin >> searchName;
+                hospitalManagementSystem.searchPatientName(searchName);
+                break;
+            }
+            case 5: {
+                cout << "Exiting the Hospital management system. Goodbye!" << endl;
+                return 0;
+            }
+            default: {
+                cout << "Invalid choice. Please enter a valid option." << endl;
+            }
+        }
+    }
+
+    return 0;
+}

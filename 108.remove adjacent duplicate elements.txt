@@ -1,0 +1,36 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+string removeAdjacentDuplicates(const string& input) {
+    stack<char> charStack;
+    string result;
+
+    for (char c : input) {
+        if (!charStack.empty() && c == charStack.top()) {
+            // Pop if the current character is the same as the top of the stack (adjacent duplicate)
+            charStack.pop();
+        } else {
+            // Push the character onto the stack if it is not an adjacent duplicate
+            charStack.push(c);
+        }
+    }
+
+    // Pop elements from the stack to construct the result string
+    while (!charStack.empty()) {
+        result = charStack.top() + result;
+        charStack.pop();
+    }
+
+    return result;
+}
+
+int main() {
+    string input = "abbaacd";
+
+    string result = removeAdjacentDuplicates(input);
+
+    cout << "String after removing adjacent duplicates: " << result << endl;
+
+    return 0;
+}

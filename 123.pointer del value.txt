@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+   int *pointval;
+   pointval = new int;
+   *pointval = 45;
+   cout<<*pointval;
+   delete pointval;
+   return 0;
+}

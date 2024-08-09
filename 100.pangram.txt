@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define TOTAL_ALPHABETS 26
+
+bool isPangram(char sentence[]) {
+    int alphabetCount[TOTAL_ALPHABETS] = {0};
+
+    // Iterate through each character in the sentence
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        char currentChar = sentence[i];
+
+        // Check if the character is an alphabet
+        if ('a' <= currentChar && currentChar <= 'z') {
+            alphabetCount[currentChar - 'a']++;
+        } else if ('A' <= currentChar && currentChar <= 'Z') {
+            alphabetCount[currentChar - 'A']++;
+        }
+    }
+
+    // Check if each alphabet is present at least once
+    for (int i = 0; i < TOTAL_ALPHABETS; i++) {
+        if (alphabetCount[i] == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+int main() {
+    char sentence[1000];
+    
+    printf("Enter a sentence: ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    if (isPangram(sentence)) {
+        printf("The sentence is a pangram.\n");
+    } else {
+        printf("The sentence is not a pangram.\n");
+    }
+
+    return 0;
+}

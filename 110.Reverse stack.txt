@@ -1,0 +1,25 @@
+#include <iostream>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+string reversestring(string inputString) {
+    stack<char> charstack;
+    for (char c : inputString) {
+        charstack.push(c);
+    }
+    string reversedstring = "";
+    while (!charstack.empty()) {
+        reversedstring = reversedstring + charstack.top();
+        charstack.pop();
+    }
+    return reversedstring;
+}
+
+int main() {
+    string str = "hello";
+    string rev = reversestring(str);
+    cout << rev;
+    return 0;
+}

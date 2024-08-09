@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Employee 
+{
+public:
+    string name;
+    int employeeId;
+    double salary;
+    Employee(string n, int id, double s) : name(n), employeeId(id), salary(s) {}
+    void displayDetails() 
+    {
+        cout << "Employee Name: " << name << "\nEmployee ID: " << employeeId << "\nSalary: $" << salary << endl;
+    }
+};
+class Manager : public Employee 
+{
+public:
+    string department;
+    Manager(string n, int id, string dept, double s) : Employee(n, id, s), department(dept) {}
+    void displayDetails() 
+    {
+        Employee::displayDetails();
+        cout << "Department: " << department << endl;
+    }
+};
+class Worker : public Employee 
+{
+public:
+    int hoursWorked;
+    Worker(string n, int id, int hours) : Employee(n, id, 10000), hoursWorked(hours) {}
+    void displayDetails()
+    {
+        Employee::displayDetails();
+        cout << "Hours Worked: " << hoursWorked << " hours" << endl;
+    }
+};
+int main() 
+{
+    Manager manager("vimal", 118, "Human Resources", 30000.00);
+    Worker worker("veeran", 003, 15);
+    cout << "Manager Details:\n";
+    manager.displayDetails();
+    cout << "\nWorker Details:\n";
+    worker.displayDetails();
+    return 0;
+}

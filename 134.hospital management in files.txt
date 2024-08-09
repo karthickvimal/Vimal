@@ -1,0 +1,285 @@
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <windows.h>
+
+using namespace std;
+
+class Hospital
+{
+private:
+    string patientId;
+    string patientName;
+    string diseaseName;
+    int age;
+    string doctorName;
+    string specialization;
+    string medicineName;
+    int medicinePrice;
+    int quantity;
+
+public:
+    Hospital()
+    {
+        patientId = " ";
+        patientName = " ";
+        diseaseName = " ";
+        age = 0;
+        doctorName = " ";
+        specialization = " ";
+        medicineName = " ";
+        medicinePrice = 0;
+        quantity = 0;
+    }
+
+    void setPatientId(string id)
+    {
+        patientId = id;
+    }
+
+    void setPatientName(string name)
+    {
+        patientName = name;
+    }
+
+    void setDiseaseName(string name)
+    {
+        diseaseName = name;
+    }
+
+    void setPatientAge(int a)
+    {
+        age = a;
+    }
+
+    void setDoctorName(string name)
+    {
+        doctorName = name;
+    }
+
+    void setSpecialization(string spec)
+    {
+        specialization = spec;
+    }
+
+    void setMedicineName(string name)
+    {
+        medicineName = name;
+    }
+
+    void setMedicinePrice(int price)
+    {
+        medicinePrice = price;
+    }
+
+    void setQuantity(int q)
+    {
+        quantity = q;
+    }
+
+    string getPatientId()
+    {
+        return patientId;
+    }
+
+    string getPatientName()
+    {
+        return patientName;
+    }
+
+    string getDiseaseName()
+    {
+        return diseaseName;
+    }
+
+    int getPatientAge()
+    {
+        return age;
+    }
+
+    string getDoctorName()
+    {
+        return doctorName;
+    }
+
+    string getSpecialization()
+    {
+        return specialization;
+    }
+
+    string getMedicineName()
+    {
+        return medicineName;
+    }
+
+    int getMedicinePrice()
+    {
+        return medicinePrice;
+    }
+
+    int getQuantity()
+    {
+        return quantity;
+    }
+
+    void addPatient()
+    {
+        system("cls");
+        string id, name, disease;
+        int age;
+
+        cout << "\t Enter Patient ID:";
+        cin >> id;
+        setPatientId(id);
+
+        cout << "\t Enter Patient Name:";
+        cin >> name;
+        setPatientName(name);
+
+        cout << "\t Enter Disease Name:";
+        cin >> disease;
+        setDiseaseName(disease);
+
+        cout << "\t Enter age of patient:";
+        cin >> age;
+        setPatientAge(age);
+
+        ofstream out("C:\\Users\\LENOVO S\\Desktop\\hospitalData1.txt", ios::app);
+        if (!out.is_open())
+        {
+            cout << "\t Error: File can't open!" << endl;
+        }
+        else
+        {
+            out << "Patient: " << getPatientId() << " " << getPatientName() << " " << getDiseaseName() << " "
+                << getPatientAge() << endl;
+            out.close();
+        }
+
+        cout << "\t Patient added successfully" << endl;
+    }
+
+    void addDoctor()
+    {
+        system("cls");
+        string name, spec;
+
+        cout << "\t Enter Doctor Name:";
+        cin >> name;
+        setDoctorName(name);
+
+        cout << "\t Enter Specialization:";
+        cin >> spec;
+        setSpecialization(spec);
+
+        ofstream out("C:\\Users\\LENOVO S\\Desktop\\hospitalData2.txt", ios::app);
+        if (!out.is_open())
+        {
+            cout << "\t Error: File can't open!" << endl;
+        }
+        else
+        {
+            out << "Doctor: " << getDoctorName() << " " << getSpecialization() << endl;
+            out.close();
+        }
+
+        cout << "\t Doctor added successfully" << endl;
+    }
+
+    void addBill()
+    {
+        system("cls");
+        string id, name, medicine;
+        int price, qty;
+
+        cout << "\t Enter Patient ID for Billing:";
+        cin >> id;
+        setPatientId(id);
+
+        cout << "\t Enter Patient Name for Billing:";
+        cin >> name;
+        setPatientName(name);
+
+        cout << "\t Enter Medicine Name:";
+        cin >> medicine;
+        setMedicineName(medicine);
+
+        cout << "\t Enter Medicine Price:";
+        cin >> price;
+        setMedicinePrice(price);
+
+        cout << "\t Enter Quantity:";
+        cin >> qty;
+        setQuantity(qty);
+
+        ofstream out("C:\\Users\\LENOVO S\\Desktop\\hospitalData3.txt", ios::app);
+        if (!out.is_open())
+        {
+            cout << "\t Error: File can't open!" << endl;
+        }
+        else
+        {
+            out << "Billing: " << getPatientId() << " " << getPatientName() << " " << getMedicineName() << " "
+                << getMedicinePrice() << " " << getQuantity() << " " << (getMedicinePrice() * getQuantity()) << endl;
+            out.close();
+        }
+
+        cout << "\t Billing information added successfully" << endl;
+    }
+
+    void displayAll()
+    {
+        ifstream in("C:\\Users\\LENOVO S\\Desktop\\hospitalData.txt");
+        string line;
+
+        cout << "\t PATIENTS || DOCTORS || BILLING || INFORMATION" << endl;
+
+        while (getline(in, line))
+        {
+            cout << "\t " << line << endl;
+        }
+
+        in.close();
+    }
+};
+
+int main()
+{
+    Hospital h;
+    while (true)
+    {
+        system("cls");
+        int val;
+        cout << "\t WELCOME TO HOSPITAL SYSTEM" << endl;
+        cout << "\t ************************************************************" << endl;
+        cout << "\t \t1. Add Patient Information." << endl;
+        cout << "\t \t2. Add Doctor Information." << endl;
+        cout << "\t \t3. Add Billing Information." << endl;
+        cout << "\t \t4. Display All Data." << endl;
+        cout << "\t \t5. EXIT." << endl;
+        cout << "\t \t Enter choice:";
+        cin >> val;
+        switch (val)
+        {
+        case 1:
+            h.addPatient();
+            break;
+        case 2:
+            h.addDoctor();
+            break;
+        case 3:
+            h.addBill();
+            break;
+        case 4:
+            h.displayAll();
+            break;
+        case 5:
+            system("cls");
+            cout << "\t GOODBYE!" << endl;
+            return 0;
+        default:
+            cout << "\t Invalid choice. Try Again!" << endl;
+        }
+    }
+    return 0;
+}

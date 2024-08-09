@@ -1,0 +1,277 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Food
+{
+public:
+    string foodname;
+    string price;
+    string quantity;
+    Food(string f, string p, string q) : foodname(f), price(p), quantity(q) {}
+    void displayDetails()
+    {
+        cout << "FoodName: " << foodname << "\nPrice:" << price << "\nQuantity:" << quantity << endl;
+    }
+};
+
+class Hotel
+{
+public:
+    string Hotelname;
+    string place;
+    Hotel(string n, string p) : Hotelname(n), place(p) {}
+    void displayDetails()
+    {
+        cout << "HotelName: " << Hotelname << "\nPlace:" << place << endl;
+    }
+};
+
+class Order
+{
+public:
+    string FoodName;
+    string HotelName;
+    string place;
+    Order(string f, string h, string p) : FoodName(f), HotelName(h), place(p) {}
+    void displayDetails()
+    {
+        cout << "FoodName: " << FoodName << "\nHotelName: " << HotelName << "\nplace: " << place << endl;
+    }
+};
+
+class Billing
+{
+public:
+    string FoodName;
+    double totalCost;
+    Billing(string f, double t) : FoodName(f), totalCost(t) {}
+    void displayDetails()
+    {
+        cout << " FoodName: " << FoodName << "\nTotal Cost: $" << totalCost << endl;
+    }
+};
+
+class HotelManagementSystem
+{
+public:
+    vector<Food> foods;
+    vector<Hotel> hotels;
+    vector<Order> orders;
+    vector<Billing> bills;
+
+    void admitFood(Food &food)
+    {
+        foods.push_back(food);
+        cout << "Food added successfully!\n";
+    }
+
+    void addHotel(Hotel &hotel)
+    {
+        hotels.push_back(hotel);
+        cout << "Hotel added successfully!\n";
+    }
+
+    void scheduleOrder(Order &order)
+    {
+        orders.push_back(order);
+        cout << "Order placed successfully!\n";
+    }
+
+    void generateBill(Billing &bill)
+    {
+        bills.push_back(bill);
+        cout << "Billing information generated successfully!\n";
+    }
+
+    void displayAllFoods()
+    {
+        if (foods.empty())
+        {
+            cout << "No food item in the Hotel.\n";
+        }
+        else
+        {
+            cout << "All food items in the Hotel:\n";
+            for (Food &food : foods)
+            {
+                food.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+
+    void searchFoodByName(string name)
+    {
+        bool found = false;
+        for (Food &food : foods)
+        {
+            if (name == food.foodname)
+            {
+                food.displayDetails();
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        {
+            cout << "Food not found.\n";
+        }
+    }
+
+    void displayAllHotels()
+    {
+        if (hotels.empty())
+        {
+            cout << "No hotels in the place.\n";
+        }
+        else
+        {
+            cout << "All hotels in the place:\n";
+            for (Hotel &hotel : hotels)
+            {
+                hotel.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+
+    void displayAllOrders()
+    {
+        if (orders.empty())
+        {
+            cout << "No orders in the hotel.\n";
+        }
+        else
+        {
+            cout << "All orders in the Hotel:\n";
+            for (Order &order : orders)
+            {
+                order.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+
+    void displayAllBills()
+    {
+        if (bills.empty())
+        {
+            cout << "No bills in the Hotel.\n";
+        }
+        else
+        {
+            cout << "All Bills in the Hotel:\n";
+            for (Billing &bill : bills)
+            {
+                bill.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+};
+
+int main()
+{
+    cout << "Hotel Management System\n";
+    HotelManagementSystem hotelSystem;
+    while (true)
+    {
+        cout << "\n[1] Food details\n";
+        cout << "[2] Display All Food\n";
+        cout << "[3] Search Food by Name\n";
+        cout << "[4] Add Hotel\n";
+        cout << "[5] Display All Hotels\n";
+        cout << "[6] Schedule Order\n";
+        cout << "[7] Display All Orders\n";
+        cout << "[8] Generate Bill\n";
+        cout << "[9] Display All Bills\n";
+        cout << "[10] Exit\n";
+        cout << "Enter your choice: ";
+        int choice;
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+        {
+            string foodname;
+            string price;
+            string quantity;
+            cout << "Enter Food Name: ";
+            cin >> foodname;
+            cout << "Enter Price of Food: ";
+            cin >> price;
+            cout << "Enter Quantity of Food: ";
+            cin >> quantity;
+            Food newFood(foodname, price, quantity);
+            hotelSystem.admitFood(newFood);
+            break;
+        }
+        case 2:
+            hotelSystem.displayAllFoods();
+            break;
+        case 3:
+        {
+            string searchName;
+            cout << "Enter Food Name to search: ";
+            cin >> searchName;
+            hotelSystem.searchFoodByName(searchName);
+            break;
+        }
+        case 4:
+        {
+            string Hotelname, place;
+            cout << "Enter Hotel Name: ";
+            cin >> Hotelname;
+            cout << "Enter Place: ";
+            cin >> place;
+            Hotel newHotel(Hotelname, place);
+            hotelSystem.addHotel(newHotel);
+            break;
+        }
+        case 5:
+            hotelSystem.displayAllHotels();
+            break;
+        case 6:
+        {
+            string FoodName;
+            string HotelName;
+            string place;
+            cout << "Enter Food Name: ";
+            cin >> FoodName;
+            cout << "Enter Hotel Name: ";
+            cin >> HotelName;
+            cout << "Enter place where the order is distributed: ";
+            cin >> place;
+            Order newOrder(FoodName, HotelName, place);
+            hotelSystem.scheduleOrder(newOrder);
+            break;
+        }
+        case 7:
+            hotelSystem.displayAllOrders();
+            break;
+        case 8:
+        {
+            string FoodName;
+            double totalCost;
+            cout << "Enter Food Name: ";
+            cin >> FoodName;
+            cout << "Enter Total Cost: $";
+            cin >> totalCost;
+            Billing newBill(FoodName, totalCost);
+            hotelSystem.generateBill(newBill);
+            break;
+        }
+        case 9:
+            hotelSystem.displayAllBills();
+            break;
+        case 10:
+            cout << "Exiting Hotel Management System. Goodbye!\n";
+            return 0;
+        default:
+            cout << "Invalid choice.\n";
+        }
+    }
+    return 0;
+}

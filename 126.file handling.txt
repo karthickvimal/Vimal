@@ -1,0 +1,17 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    ofstream outputFile;
+    outputFile.open("C:\\Users\\KURINJI\\Documents\\codeblock\\12\\file1.txt");
+    if (!outputFile.is_open()) {
+        cout << "Error opening the file" << endl;
+        return 10;
+    }
+    outputFile << "SRIHARAN" << endl;
+    outputFile.close();
+    cout << "Text has been written to the file" << endl;
+    return 0;
+}

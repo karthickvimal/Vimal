@@ -1,0 +1,306 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+class Patient {
+public:
+    string name;
+    int age;
+    string disease;
+
+    Patient(string n, int a, string d) : name(n), age(a), disease(d) {}
+
+    void displayDetails() {
+        cout << "Name: " << name << "\nAge: " << age << "\nDisease: " << disease << endl;
+    }
+};
+
+class Doctor {
+public:
+    string name;
+    string specialization;
+
+    Doctor(string n, string s) : name(n), specialization(s) {}
+
+    void displayDetails() {
+        cout << "Doctor: " << name << "\nSpecialization: " << specialization << endl;
+    }
+};
+
+class Appointment {
+public:
+    string patientName;
+    string doctorName;
+    string date;
+
+    Appointment(string p, string d, string dt) : patientName(p), doctorName(d), date(dt) {}
+
+    void displayDetails() {
+        cout << "Patient: " << patientName << "\nDoctor: " << doctorName << "\nDate: " << date << endl;
+    }
+};
+
+class Billing {
+public:
+    string patientName;
+    double totalCost;
+
+    Billing(string p, double c) : patientName(p), totalCost(c) {}
+
+    void displayDetails() {
+        cout << "Patient: " << patientName << "\nTotal Cost: $" << totalCost << endl;
+    }
+};
+
+class Prescription {
+public:
+    string patientName;
+    string doctorName;
+    string medication;
+    string dosage;
+
+    Prescription(string p, string d, string m, string dos) : patientName(p), doctorName(d), medication(m), dosage(dos) {}
+
+    void displayDetails() {
+        cout << "Patient: " << patientName << "\nDoctor: " << doctorName << "\nMedication: " << medication << "\nDosage: " << dosage << endl;
+    }
+};
+
+class HospitalManagementSystem {
+public:
+    vector<Patient> patients;
+    vector<Doctor> doctors;
+    vector<Appointment> appointments;
+    vector<Billing> bills;
+    vector<Prescription> prescriptions;
+
+    void admitPatient(Patient& patient) {
+        patients.push_back(patient);
+        cout << "Patient admitted successfully!\n";
+    }
+
+    void addDoctor(Doctor& doctor) {
+        doctors.push_back(doctor);
+        cout << "Doctor added successfully!\n";
+    }
+
+    void scheduleAppointment(Appointment& appointment) {
+        appointments.push_back(appointment);
+        cout << "Appointment scheduled successfully!\n";
+    }
+
+    void generateBill(Billing& bill) {
+        bills.push_back(bill);
+        cout << "Billing information generated successfully!\n";
+    }
+
+    void prescribeMedication(Prescription& prescription) {
+        prescriptions.push_back(prescription);
+        cout << "Prescription added successfully!\n";
+    }
+
+    void displayAllPatients() {
+        if (patients.empty()) {
+            cout << "No patients in the system.\n";
+        } else {
+            cout << "All Patients in the Hospital:\n";
+            for (Patient& patient : patients) {
+                patient.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+
+    void searchPatientByName(string name) {
+        bool found = false;
+        for (Patient& patient : patients) {
+            if (patient.name == name) {
+                patient.displayDetails();
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            cout << "Patient not found.\n";
+        }
+    }
+
+    void displayAllDoctors() {
+        if (doctors.empty()) {
+            cout << "No doctors in the system.\n";
+        } else {
+            cout << "All Doctors in the Hospital:\n";
+            for (Doctor& doctor : doctors) {
+                doctor.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+
+    void displayAllAppointments() {
+        if (appointments.empty()) {
+            cout << "No appointments in the system.\n";
+        } else {
+            cout << "All Appointments in the Hospital:\n";
+            for (Appointment& appointment : appointments) {
+                appointment.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+
+    void displayAllBills() {
+        if (bills.empty()) {
+            cout << "No bills in the system.\n";
+        } else {
+            cout << "All Bills in the Hospital:\n";
+            for (Billing& bill : bills) {
+                bill.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+
+    void displayAllPrescriptions() {
+        if (prescriptions.empty()) {
+            cout << "No prescriptions in the system.\n";
+        } else {
+            cout << "All Prescriptions in the Hospital:\n";
+            for (Prescription& prescription : prescriptions) {
+                prescription.displayDetails();
+                cout << "-------------------------\n";
+            }
+        }
+    }
+};
+
+int main() {
+    cout << "Hospital Management System\n";
+
+    // Initialize the hospital management system
+    HospitalManagementSystem hospitalSystem;
+
+    while (true) {
+        cout << "\n[1] Admit Patient\n";
+        cout << "[2] Display All Patients\n";
+        cout << "[3] Search Patient by Name\n";
+        cout << "[4] Add Doctor\n";
+        cout << "[5] Display All Doctors\n";
+        cout << "[6] Schedule Appointment\n";
+        cout << "[7] Display All Appointments\n";
+        cout << "[8] Generate Bill\n";
+        cout << "[9] Display All Bills\n";
+        cout << "[10] Prescribe Medication\n";
+        cout << "[11] Display All Prescriptions\n";
+        cout << "[12] Exit\n";
+        cout << "Enter your choice: ";
+
+        int choice;
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                string name, disease;
+                int age;
+
+                cout << "Enter Patient Name: ";
+                cin >> name;
+                cout << "Enter Age: ";
+                cin >> age;
+                cout << "Enter Disease: ";
+                cin >> disease;
+
+                Patient newPatient(name, age, disease);
+                hospitalSystem.admitPatient(newPatient);
+                break;
+            }
+            case 2:
+                hospitalSystem.displayAllPatients();
+                break;
+            case 3: {
+                string searchName;
+                cout << "Enter Patient Name to search: ";
+                cin >> searchName;
+                hospitalSystem.searchPatientByName(searchName);
+                break;
+            }
+            case 4: {
+                string name, specialization;
+
+                cout << "Enter Doctor Name: ";
+                cin >> name;
+                cout << "Enter Specialization: ";
+                cin >> specialization;
+
+                Doctor newDoctor(name, specialization);
+                hospitalSystem.addDoctor(newDoctor);
+                break;
+            }
+            case 5:
+                hospitalSystem.displayAllDoctors();
+                break;
+            case 6: {
+                string patientName, doctorName, date;
+
+                cout << "Enter Patient Name: ";
+                cin >> patientName;
+                cout << "Enter Doctor Name: ";
+                cin >> doctorName;
+                cout << "Enter Appointment Date: ";
+                cin >> date;
+
+                Appointment newAppointment(patientName, doctorName, date);
+                hospitalSystem.scheduleAppointment(newAppointment);
+                break;
+            }
+            case 7:
+                hospitalSystem.displayAllAppointments();
+                break;
+            case 8: {
+                string patientName;
+                double totalCost;
+
+                cout << "Enter Patient Name: ";
+                cin >> patientName;
+                cout << "Enter Total Cost: $";
+                cin >> totalCost;
+
+                Billing newBill(patientName, totalCost);
+                hospitalSystem.generateBill(newBill);
+                break;
+            }
+            case 9:
+                hospitalSystem.displayAllBills();
+                break;
+            case 10: {
+                string patientName, doctorName, medication, dosage;
+
+                cout << "Enter Patient Name: ";
+                cin >> patientName;
+                cout << "Enter Doctor Name: ";
+                cin >> doctorName;
+                cout << "Enter Medication: ";
+                cin >> medication;
+                cout << "Enter Dosage: ";
+                cin >> dosage;
+
+                Prescription newPrescription(patientName, doctorName, medication, dosage);
+                hospitalSystem.prescribeMedication(newPrescription);
+                break;
+            }
+            case 11:
+                hospitalSystem.displayAllPrescriptions();
+                break;
+            case 12:
+                cout << "Exiting the Hospital Management System. Goodbye!\n";
+                return 0;
+            default:
+                cout << "Invalid choice. Please enter a valid option.\n";
+        }
+    }
+
+    return 0;
+}

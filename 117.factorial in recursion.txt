@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+int Factorial(int n)
+{
+	if(n==0)
+	{
+		return 1;
+	}
+	int smallerProblem=Factorial(n-1);
+	int biggerProblem=n*smallerProblem;
+	return biggerProblem;
+}
+int main()
+{
+	int n=5;
+	int ans=Factorial(n);
+	cout<<ans;
+}

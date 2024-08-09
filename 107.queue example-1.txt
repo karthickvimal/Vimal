@@ -1,0 +1,19 @@
+#include <queue>
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    queue<string> language;
+    language.push("c");
+    language.push("c++");
+    language.push("java");
+    language.push("Python");
+while(!language.empty())
+{
+	cout<<"\n"<<language.front()<<endl;
+	language.pop();
+	}
+	cout<<"the size is="<<language.size()<<endl;
+	return 0;
+}

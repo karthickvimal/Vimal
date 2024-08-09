@@ -1,0 +1,117 @@
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+class Movie
+{
+	public:
+		string title;
+		string actor;
+		string bctress;
+		string director;
+		string releasedate;
+		Movie (string t,string a,string b,string d,string r)
+		{
+			title=t;
+			actor=a;
+			bctress=b;
+			director=d;
+			releasedate=r;
+		}
+		void displayDetails()
+		{
+		    cout<<"Ttile:"<<title<<"\nactor:"<<actor<<"\nbctress:"<<bctress<<"\ndirector:"<<director<<"\nrelease date:"<<releasedate<<endl;
+		}
+};
+class library
+{
+	public:
+		vector<Movie>movies;
+		void addMovie(Movie& movie)
+		{
+			movies.push_back(movie);
+			cout<<"*****the movie details*****\n";
+		}
+		void displayAllMovies()
+		{
+			if(movies.empty())
+			{
+				cout<<"No Movies\n";
+			}
+			else
+			{
+				cout<<"All Movies:\n";
+				for(Movie&movie: movies)
+				{
+					movie.displayDetails();
+					cout<<"-------------------\n";
+				}
+			}
+		}
+		void searchMovieByTitle(string title)
+		{
+			bool found=false;
+			for(Movie&movie:movies)
+			{
+				if(movie.title==title)
+				{
+					movie.displayDetails();
+					found=true;
+					break;
+				}
+			}
+		if(!found)
+		{
+			cout<<"movie not found.\n";
+		}
+}
+};
+int main()
+{
+	cout<<"movie System\n";
+	library library;
+	while(true)
+	{
+		cout<<"\n[1] Add Movie\n";
+		cout<<"[2] Display All Movies\n";
+		cout<<"[3] Search Movie by Title\n";
+		cout<<"[4] Exit\n";
+		cout<<"Enter your choice: ";
+		int choice;
+		cin>>choice;
+		switch(choice)
+		{
+			case 1:
+				{
+					string title,actor,bctress,director,releasedate;
+					cout<<"Enter movie Title: ";
+					cin>>title;
+					cout<<"Enter actor: ";
+					cin>>actor;
+					cout<<"Enter bctress: ";
+					cin>>bctress;
+					cout<<"Enter director: ";
+					cin>>director;
+					cout<<"Enter releasedate: ";
+					cin>>releasedate;
+					Movie newMovie(title,actor,bctress,director,releasedate);
+					library.addMovie(newMovie);
+					break;
+				}
+				case 2:
+					library.displayAllMovies();
+					break;
+					case 3:
+						{
+							string searchTitle;
+							cout<<"Enter Movie Title to search: ";
+							cin>>searchTitle;
+							library.searchMovieByTitle(searchTitle);
+							break;
+						}
+						case 4:
+							cout<<"exiting the movie system.Goodbye!\n";
+		}
+	}
+	return 0;
+}

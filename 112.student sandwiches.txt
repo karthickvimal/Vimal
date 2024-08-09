@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+int countStudentsUnableToEat(vector<int>& students, vector<int>& sandwiches)
+{
+    stack<int> sandwichStack;
+    for (int i = sandwiches.size()-1; i>=0;--i) 
+    {
+        sandwichStack.push(sandwiches[i]);
+    }
+    for (int i=0;i<students.size();++i) 
+    {
+        if (!sandwichStack.empty()&&students[i]==sandwichStack.top())
+        {
+            sandwichStack.pop();
+        } else 
+        {
+            students.push_back(students[i]);
+        }
+    }
+    return students.size() - sandwichStack.size();
+}
+
+int main()
+{
+    vector<int> students = {0, 1, 0, 1};
+    vector<int> sandwiches = {0, 1, 0, 1};
+    int unableToEat = countStudentsUnableToEat(students, sandwiches);
+    cout << "Number of students unable to eat: " << unableToEat << endl;
+    return 0;
+}

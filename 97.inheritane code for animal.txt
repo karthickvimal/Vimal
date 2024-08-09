@@ -1,0 +1,36 @@
+#include <iostream>  
+using namespace std;  
+ class Animal {  
+   public:  
+ void eat() {   
+    cout<<"\nI CAN EAT"<<endl;   
+ }    
+ void sleep() {   
+    cout<<"\nI CAN SLEEP"<<endl;   
+ }    
+   };  
+   class Dog: public Animal    
+   {    
+       public:  
+     void bark(){  
+    cout<<"I CAN BARK";   
+     }    
+   };   
+    class Cat: public Animal    
+   {    
+       public:  
+     void meow(){  
+    cout<<"I CAN MEOW";   
+     }  
+   };
+int main(void) {  
+    Dog d1;  
+    d1.eat();  
+    d1.bark();
+    d1.sleep();
+    Cat c1;
+    c1.eat();
+    c1.meow();
+    c1.sleep();
+    return 0;  
+}  

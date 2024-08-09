@@ -1,0 +1,176 @@
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <sstream>
+#include <windows.h>
+using namespace std;
+class HospitalBill
+{
+private:
+    string PatientName;
+    string Disease;
+    int Cost;
+    int Quantity;
+
+public:
+    HospitalBill()
+    {
+        PatientName = " ";
+        Disease = " ";
+        Cost = 0;
+        Quantity = 0;
+    }
+
+    void setPatientName(string name)
+    {
+        PatientName = name;
+    }
+
+    void setDisease(string disease)
+    {
+        Disease = disease;
+    }
+
+    void setCost(int cost)
+    {
+        Cost = cost;
+    }
+
+    void setQuantity(int quantity)
+    {
+        Quantity = quantity;
+    }
+
+    string getPatientName()
+    {
+        return PatientName;
+    }
+
+    string getDisease()
+    {
+        return Disease;
+    }
+
+    int getCost()
+    {
+        return Cost;
+    }
+
+    int getQuantity()
+    {
+        return Quantity;
+    }
+
+    void addDisease()
+    {
+        system("cls");
+        string patientName, disease;
+        int cost, quantity;
+
+        cout << "\t Enter Patient Name: ";
+        cin >> patientName;
+        setPatientName(patientName);
+
+        cout << "\t Enter the Disease: ";
+        cin >> disease;
+        setDisease(disease);
+
+        cout << "\t Enter the Cost of Disease: ";
+        cin >> cost;
+        setCost(cost);
+
+        cout << "\t Enter the Quantity of Disease: ";
+        cin >> quantity;
+        setQuantity(quantity);
+
+        ofstream out("C:\\Users\\LENOVO S\\Desktop\\HospitalBill.txt", ios::app);
+
+        if (!out.is_open())
+        {
+            out << "\t Error: File can't open!" << endl;
+        }
+        else
+        {
+            out << getPatientName() << " " << getDisease() << " " << getCost() << " " << getQuantity() << endl;
+        }
+
+        out.close();
+        cout << "\t Disease added successfully" << endl;
+    }
+
+    void printBill()
+    {
+        system("cls");
+        int Total = 0;
+        ofstream billPrintFile("C:\\Users\\LENOVO S\\Desktop\\HospitalBillPrint.txt");
+
+        if (!billPrintFile.is_open())
+        {
+            cout << "\t Error: Could not open HospitalBillPrint.txt for writing" << endl;
+            return;
+        }
+
+        ifstream in("C:\\Users\\LENOVO S\\Desktop\\HospitalBill.txt");
+        string line;
+
+        billPrintFile << "\t PATIENT NAME    |   DISEASE     |   COST   |   QUANTITY   |   AMOUNT" << endl;
+
+        while (getline(in, line))
+        {
+            stringstream ss(line);
+            string patientName, disease;
+            int cost, quantity;
+
+            ss >> patientName >> disease >> cost >> quantity;
+
+            int amount = cost * quantity;
+            billPrintFile << "\t " << patientName << "\t " << disease << "\t " << cost << "\t " << quantity << "\t " << amount << endl;
+            Total += amount;
+        }
+
+        in.close();
+        billPrintFile << "\n \t Total Bill: " << Total << endl;
+        billPrintFile << "\t Thanks for choosing our hospital!" << endl;
+        billPrintFile.close();
+
+        cout << "\t Bill printed successfully to HospitalBillPrint.txt" << endl;
+        Sleep(3000);
+    }
+};
+
+int main()
+{
+    HospitalBill hb;
+
+    while (true)
+    {
+        system("cls");
+        int val;
+
+        cout << "\t WELCOME TO HOSPITAL BILLING SYSTEM" << endl;
+        cout << "\t ********************************" << endl;
+        cout << "\t \t1.ADD DISEASE." << endl;
+        cout << "\t \t2.PRINT BILL." << endl;
+        cout << "\t \t3.EXIT." << endl;
+        cout << "\t \t Enter choice: ";
+        cin >> val;
+
+        switch (val)
+        {
+        case 1:
+            hb.addDisease();
+            break;
+        case 2:
+            hb.printBill();
+            break;
+        case 3:
+            system("cls");
+            cout << "\t THANK YOU FOR USING OUR HOSPITAL BILLING SYSTEM!" << endl;
+            return 0;
+        default:
+            cout << "\t Invalid choice. Try Again!" << endl;
+        }
+    }
+
+    return 0;
+}
