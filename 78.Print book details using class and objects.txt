@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+class book
+{
+    public:
+    string bookname;
+    int id;
+    int year;
+    string author;
+    void getdetails()
+    {
+        cout<<"enter the book name "<<endl;
+        cin>>bookname;
+        cout<<"enter book id "<<endl;
+        cin>>id;
+        cout<<"enter book publication year "<<endl;
+        cin>>year;
+        cout<<"enter author name "<<endl;
+        cin>>author;
+    }
+    void display()
+    {
+        cout<<"name = "<<bookname<<endl;
+        cout<<"book id no = "<<id<<endl;
+        cout<<"publication year = "<<year<<endl;
+        cout<<"author name = "<<author<<endl;
+    }
+};
+int main()
+{
+    book details;
+    details.getdetails();
+    details.display();
+}

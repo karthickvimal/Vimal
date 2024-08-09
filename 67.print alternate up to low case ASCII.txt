@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char s1[50],s2[50],i,length;
+	printf("enter the first string:");
+	gets(s1);
+	length=strlen(s1);
+	for(int i=0;s1[i]!='\0';i++)
+	{
+		if((s1[i]>='a')&&(s1[i]<='z'))
+		{
+			s2[i]=s1[i]-32;
+		}
+		else if((s1[i]>='A')&&(s1[i]<='Z'))
+		{
+			s2[i]=s1[i]+32;
+		}
+	}
+	printf("alternate string is:%s",s2);
+}

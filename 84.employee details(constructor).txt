@@ -1,0 +1,25 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class Employee
+{
+     public:
+     string name;
+     int employeeId;
+     double salary;
+     Employee (string n,int id,double s)
+     {
+          name=n;
+          employeeId=id;
+          salary=s;
+     }
+     void displayEmployeeDetails()
+     {
+          cout<<"name:"<<name<<",\nEmployee ID:"<<employeeId<<",\nsalary:Rs."<<salary<<endl;
+     }
+};
+int main()
+{
+     Employee emp1("vimal",101,50000.0);
+     emp1.displayEmployeeDetails();
+}

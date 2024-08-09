@@ -1,0 +1,26 @@
+#include <iostream>
+#include<string>>
+using namespace std;
+class student{
+public:
+    string name;
+    int rollno;
+    string dept;
+    student(string n,int rno,string d)
+    {
+        name=n;
+        rollno=rno;
+        dept=d;
+    }
+    void employeedetails()
+    {
+        cout<<"student name:"<<name<<endl;
+        cout<<"roll no:"<<rollno<<endl;
+        cout<<"branch:"<<dept<<endl;
+    }
+};
+int main()
+{
+   student e("vijay",115,"ece");
+   e.employeedetails();
+}

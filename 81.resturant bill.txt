@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+class RestaurantBillGenerator {
+public:
+    vector<string> items;
+    vector<double> price;
+
+    void addItem(string itemName, double itemPrice) {
+        items.push_back(itemName);
+        price.push_back(itemPrice);
+        cout << "Item added: " << itemName << endl;
+    }
+    void calculate() {
+        double subtotal = 0.0;
+        for (int i = 0; i < price.size(); i++) {
+            subtotal += price[i];
+        }
+
+        const double GST_RATE = 0.18;
+        double gst = subtotal * GST_RATE;
+        double total = subtotal + gst;
+        displayBill(subtotal, gst, total);
+    }
+    void displayBill(double subtotal, double gst, double total) {
+        cout << "***Bill Details***" << endl;
+        for (int i = 0; i < items.size(); i++) {
+            cout << items[i] << " is Rs= " << price[i] << endl;
+        }
+
+        cout << "Subtotal: Rs =" << subtotal << endl;
+        cout << "GST (18%): Rs= " << gst << endl;
+        cout << "Total: Rs " << total << endl;
+    }
+};
+int main() {
+    RestaurantBillGenerator myBill;
+    myBill.addItem("briyani", 80);
+    myBill.addItem("tanthoori", 300);
+    
+    myBill.calculate();
+
+    return 0;
+}

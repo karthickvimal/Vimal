@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+class shape
+{
+	public:
+		double a;
+		double b;
+		double c;
+float areaoftri()
+{
+	float area=0.5*a*b;
+	return area;
+}
+int perioftri()
+{
+	int peri=a+b+c;
+	return peri;
+}
+};
+int main()
+{
+	shape tri;
+	tri.a=5;
+	tri.b=10;
+	tri.c=15;
+	float area=tri.areaoftri();
+	int peri=tri.perioftri();
+	cout<<"Area of triangle="<<area<<endl;
+	cout<<"Perimeter of triangle="<<peri<<endl;
+}

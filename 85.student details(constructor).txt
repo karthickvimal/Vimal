@@ -1,0 +1,25 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class student
+{
+     public:
+     string name;
+     int rollno;
+     string place;
+     student (string n,int r,string p)
+     {
+          name=n;
+          rollno=r;
+          place=p;
+     }
+     void displaystudentDetails()
+     {
+          cout<<"name:"<<name<<",\nroll No:"<<rollno<<",\nnative:"<<place<<endl;
+     }
+};
+int main()
+{
+     student std1("vimal",118,"Rajaplayam");
+     std1.displaystudentDetails();
+}

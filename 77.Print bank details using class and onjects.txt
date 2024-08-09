@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+class bank
+{
+    public:
+    string name;
+    int id;
+    int amount;
+    int withdraw;
+    int balance=amount-withdraw;
+    void getdetails()
+    {
+        cout<<"enter your name "<<endl;
+        cin>>name;
+        cout<<"enter customer id "<<endl;
+        cin>>id;
+        cout<<"enter initial amount"<<endl;
+        cin>>amount;
+        cout<<"enter your withdraw "<<endl;
+        cin>>withdraw;
+    }
+    void display()
+    {
+        cout<<"name = "<<name<<endl;
+        cout<<"id no = "<<id<<endl;
+        cout<<"initial amount = "<<amount<<endl;
+        cout<<"withdraw amount = "<<withdraw<<endl;
+        int balance = amount - withdraw;
+        cout<<"balance amount = "<<balance;
+    }
+};
+int main()
+{
+    bank details;
+    details.getdetails();
+    details.display();
+}

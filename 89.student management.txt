@@ -1,0 +1,77 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class student {
+public:
+    string name;
+    int rollno;
+    string branch;
+    double physics;
+    double maths;
+    double computerscience;
+
+    student(string n, int roll, string b) {
+        name = n;
+        rollno = roll;
+        branch = b;
+    }
+
+    void studentdetails() {
+        cout << "Enter the student name: ";
+        cin >> name;
+        cout << "Enter the rollno: ";
+        cin >> rollno;
+        cout << "Enter the branch: ";
+        cin >> branch;
+    }
+
+    void studentmarks() {
+        cout << "Enter the marks obtained in physics: ";
+        cin >> physics;
+        cout << "Enter the marks obtained in maths: ";
+        cin >> maths;
+        cout << "Enter the marks obtained in computer science: ";
+        cin >> computerscience;
+    }
+void displaypercentage() {
+        double total = physics + computerscience + maths;
+        double percentage = total / 3;
+        cout << "Percentage: " << percentage << "%" << endl;
+    }
+};
+
+int main() {
+    cout << "Student Management System\n";
+    student mystu("", 0, "");
+    while (true) {
+        cout << "\n [1] Student Details\n";
+        cout << " [2] Student Marks\n";
+        cout << " [3] Display Percentage\n";
+        cout << " [4] Exit\n";
+        cout << "Enter your choice: ";
+        int choice;
+        cin >> choice;
+        switch (choice) {
+            case 1:
+                mystu.studentdetails();
+                break;
+
+            case 2:
+                mystu.studentmarks();
+                break;
+
+            case 3:
+                mystu.displaypercentage();
+                break;
+
+            case 4:
+                cout << "Exiting the management system. Goodbye!\n";
+                return 0;
+
+            default:
+                cout << "Invalid choice. Please enter a valid option.\n";
+        }
+    }
+    return 0;
+}

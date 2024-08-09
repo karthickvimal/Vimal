@@ -1,0 +1,89 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class BankAccount
+{
+     public:
+     string accountHolder;
+     double balance;
+     BankAccount(string holder,double initialBalance)
+     {
+          accountHolder=holder;
+          balance=initialBalance;
+     }
+     void deposit(double amount)
+     {
+          if(amount>0)
+          {
+               balance=balance+amount;
+               cout<<"Deposit successful.New balance:Rs."<<balance<<endl;
+          }
+          else
+          {
+               cout<<"Invalid deposit amount.Please enter a positive value.\n";
+          }
+     }
+     void withdraw(double amount)
+     {
+          if(amount>0 && amount<=balance)
+          {
+               balance=balance-amount;
+               cout<<"Withdraw successful.New balance:Rs."<<balance<<endl;
+          }
+          else
+          {
+               cout<<"Invalid Withdraw amount or insufficient balance.\n";
+          }
+     }
+     void checkBalance()
+     {
+          cout<<"Account Holder:"<<accountHolder<<"\nBalance:Rs."<<balance<<endl;
+     }
+};
+int main()
+{
+     cout<<"Simple Banking System\n";
+     string accountHolder;
+     double initialBalance;
+     cout<<"Enter initial Balance:Rs";
+     cin>>initialBalance;
+     BankAccount myAccount(accountHolder,initialBalance);
+     while(true)
+     {
+          cout<<"\n[1]Deposit\n";
+          cout<<"\n[2]Withdraw\n";
+          cout<<"[3]checkBalance\n";
+          cout<<"[4]Exit\n";
+          cout<<"Enter your choice:";
+          int choice;
+          cin>>choice;
+          switch(choice)
+          {
+               case 1:
+               {
+                    double depositAmount;
+                    cout<<"Enter deposit amount:Rs.";
+                    cin>>depositAmount;
+                    myAccount.deposit(depositAmount);
+                    break;
+               }
+               case 2:
+               {
+                    double WithdrawAmount;
+                    cout<<"Enter Withdraw amount:Rs";
+                    cin>>WithdrawAmount;;
+                    myAccount.withdraw(WithdrawAmount);
+                    break;
+               }
+               case 3:
+               myAccount.checkBalance();
+               break;
+               case 4:
+               cout<<"Exiting the Banking system.GoodBye!\n";
+               return 0;
+               default:
+               cout<<"Invalid choice.Please enter a valid option.\n";
+          }
+     }
+     return 0;
+}

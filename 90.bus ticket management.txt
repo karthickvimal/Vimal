@@ -1,0 +1,124 @@
+#include <iostream>
+#include<vector>
+#include<string>
+using namespace std;
+class bus{
+public:
+    string name,from,to;
+    long long int c_no,a_no;
+    int seat;
+    bus(string n,long long int c,long long int a,string f,string t,int no)
+    {
+        name=n;
+        c_no=c;
+        a_no=a;
+        from=f;
+        to=t;
+        seat=no;
+    }
+    void detail()
+    {
+        cout<<"************************"<<endl;
+        cout<<"Name:"<<name<<endl;
+        cout<<"Contact No:"<<c_no<<endl;
+        cout<<"Aadhar No:"<<a_no<<endl;
+        cout<<"************************"<<endl;
+    }
+    void destination()
+    {
+        cout<<"************************"<<endl;
+        cout<<"From:"<<from<<endl;
+        cout<<"To:"<<to<<endl;
+        cout<<"************************"<<endl;
+    }
+    void no_seat()
+    {
+        if(seat>0)
+        {
+            cout<<"************************"<<endl;
+            cout<<"you have booked "<<seat<<"seats"<<endl;
+            cout<<"************************"<<endl;
+        }
+    }
+    void calculate()
+    {
+        float gst,total,tic=18.5;
+        total=seat*tic;
+        gst=total*0.18;
+        cout<<"**************************************"<<endl;
+        cout<<"Name:"<<name<<endl;
+        cout<<"Contact No:"<<c_no<<endl;
+        cout<<"Aadhar No:"<<a_no<<endl;
+        cout<<"---------------------------------------"<<endl;
+        cout<<"From:"<<from<<endl;
+        cout<<"To:"<<to<<endl;
+        cout<<"---------------------------------------"<<endl;
+         cout<<"you have booked "<<seat<<"seats"<<endl;
+        cout<<"amount:  "<<seat<<"*"<<tic<<"="<<total<<endl;
+        cout<<"gst amount "<<gst<<endl;
+        cout<<"Amount included gst Rs."<<total+gst<<endl;
+        cout<<"*************************************"<<endl;
+    }
+};
+int main()
+{
+    string names,froms,tos;
+    long long int cnos,anos;
+    int seats;
+  cout<<"Bus Ticket Generator"<<endl;
+  cout<<"Enter your name:"<<endl;
+  cin>>names;
+   cout<<"Enter your contact no:"<<endl;
+   cin>>cnos;
+   cout<<"Enter your aadhar no:"<<endl;
+   cin>>anos;
+   cout<<"Enter starting place:"<<endl;
+   cin>>froms;
+   cout<<"Enter ending place:"<<endl;
+   cin>>tos;
+   cout<<"enter no of seats you want:"<<endl;
+   cin>>seats;
+
+   bus bu(names,cnos,anos,froms,tos,seats);
+   {
+       int ch;
+       while(true){
+           cout<<"enter your choice "<<endl;
+           cout<<"[1]->Passenger details"<<endl;
+           cout<<"[2]->destination"<<endl;
+           cout<<"[3]->seat details"<<endl;
+           cout<<"[4]->ticket generation:"<<endl;
+           cout<<"[5]->exit:"<<endl;
+           cin>>ch;
+           switch(ch)
+           {
+           case 1:
+            {
+                bu.detail();
+                break;
+            }
+           case 2:{
+            bu.destination();
+            break;
+           }
+           case 3:
+               {
+                   bu.no_seat();
+                   break;
+               }
+           case 4:
+            {
+                bu.calculate();
+                break;
+            }
+           case 5:
+            {
+                cout<<"---------------------------------------"<<endl;
+                cout<<"thank you ! safe journey"<<endl;
+                cout<<"---------------------------------------"<<endl;
+                return 0;
+            }
+
+
+   }}
+}}

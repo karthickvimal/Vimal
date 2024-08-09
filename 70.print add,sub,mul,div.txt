@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+void add(int a,int b)
+{
+	int sum=a+b;
+     cout<<"\n Number 1 is="<<a;
+     cout<<"\n Number 2 is="<<b;
+     cout<<"\n The sum is ="<<sum<<endl;
+}
+void sub(int a,int b)
+{
+     int sub=a-b;
+     cout<<"\n Number 1 is="<<a;
+     cout<<"\n Number 2 is="<<b;
+     cout<<"\n The sub is ="<<sub<<endl;
+}
+void mul(int a,int b)
+{
+     int mul=a*b;
+     cout<<"\n Number 1 is="<<a;
+     cout<<"\n Number 2 is="<<b;
+     cout<<"\n The mul is ="<<mul<<endl;
+}
+void div(int a,int b)
+{
+     int div=a/b;
+     cout<<"\n Number 1 is="<<a;
+     cout<<"\n Number 2 is="<<b;
+     cout<<"\n The div is ="<<div<<endl;
+}
+int main()
+{
+     int n1=20;
+     int n2=10;
+     add(n1,n2);
+     sub(n1,n2);
+     mul(n1,n2);
+     div(n1,n2);
+}

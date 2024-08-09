@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+class shape
+{
+	public:
+		double length;
+		double breadth;
+int areaofrect()
+{
+	int area=length*breadth;
+	return area;
+}
+int periofrect()
+{
+	int peri=2*(length+breadth);
+	return peri;
+}
+};
+int main()
+{
+	shape rect;
+	rect.length=5;
+	rect.breadth=10;
+	int area=rect.areaofrect();
+	int peri=rect.periofrect();
+	cout<<"Area="<<area<<endl;
+	cout<<"Perimeter="<<peri<<endl;
+}

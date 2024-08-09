@@ -1,0 +1,30 @@
+#include<stdio.h>
+int main()
+{
+	int n;
+	printf("Enter the number of element you want in the array\n");
+	scanf("%d",&n);
+	int num[n];
+	printf("Enter the elements\n");
+	for(int i=0;i<n;i++)
+	{
+		scanf("%d",&num[i]);
+	}
+	printf("\n odd num:");
+	for(int i=0;i<n;i++)
+	{
+		if(num[i]%2!=0)
+		{
+			printf("%d",num[i]);
+		}
+	}
+	printf("\n even num:");
+	for(int i=0;i<n;i++)
+	{
+		if(num[i]%2==0)
+		{
+			printf("%d",num[i]);
+		}
+	}
+	return 0;
+}

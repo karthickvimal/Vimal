@@ -1,0 +1,60 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+class ticketcounter
+{
+    public:
+    vector<string>item;
+    vector<double>prices;
+    void additem(string itemname,double price)
+    {
+        item.push_back(itemname);
+        prices.push_back(price);
+        cout<< "Travel "<<itemname<<"Rs."<<price<< "\n"<<endl;
+    }
+    double calculate_total()
+    {
+        double total=0.0;
+        double discount;
+        double totalprice;
+        for(int i=0;i<prices.size();i++)
+        {
+            total=total+prices[i];
+        }
+        cout<< "\ntotalprice without discount="<<total<<endl;
+        if(total<500)
+        {
+          discount=total*0.03;
+            total=total-discount;
+        }else if((total<=501)&&(total>=1000))
+        {
+            discount=total*0.09;
+            total=total-discount;
+
+        }else
+        {
+            discount=total*0.15;
+            total=total-discount;
+        }
+        return total;
+    }
+    void displayitem()
+    {
+        for(int i=0;i<item.size();i++)
+        {
+            cout<<item[i]<< "is Rs."<<prices[i]<<endl;
+        }
+        cout<< "\ntotalprice with special discount="<<calculate_total()<<endl;
+    }
+};
+int main()
+{
+    ticketcounter mybill;
+    cout<<"*****ECE Travel*****"<<endl;
+    mybill.additem("No.1 = theni to madurai =",150);
+    mybill.additem("No.2 = thirunelveli to madurai=",500);
+    mybill.additem("No.3 = chennai to madurai=",1000);
+    mybill.displayitem();
+    return 0;
+}

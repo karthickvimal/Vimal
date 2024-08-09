@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+class student 
+{
+    public:
+    string name;
+    int rollno;
+    vector<int> marks;
+    student(string n, int roll)
+    {
+        name = n;
+        rollno = roll;
+    }
+
+    void addmark(int mark) 
+    {
+        marks.push_back(mark);
+        cout << "mark added:" << mark << endl;
+    }
+
+    double average() 
+    {
+        if (marks.empty()) 
+        {
+            return 0;
+        }
+        double sum = 0.0;
+        double avg;
+        for (int i = 0; i < marks.size(); i++) 
+        {
+            sum = sum + marks[i];
+        }
+        avg = sum / marks.size();
+        cout << "average is:" << avg << endl;
+        return 100 * (sum / (marks.size() * 100));
+    }
+
+    void grade() 
+    {
+        double avg = average();
+
+        if ((avg >= 50) && (avg <= 70)) 
+        {
+            cout << "C grade" << endl;
+        } else if ((avg > 70) && (avg <= 90)) 
+        {
+            cout << "B grade" << endl;
+        } else if ((avg > 90) && (avg <= 100)) 
+        {
+            cout << "A grade" << endl;
+        }
+    }
+
+    void display() 
+    {
+        double avg = average();
+        cout << "student name:" << name << ",\nroll number:" << rollno << ",\npercentage:" << avg << ",\ngrade";
+        grade();
+        cout << endl;
+    }
+};
+int main() 
+{
+    student stu1("vimal", 114);
+    stu1.addmark(85);
+    stu1.addmark(92);
+    stu1.addmark(82);
+    stu1.display();
+    return 0;
+}

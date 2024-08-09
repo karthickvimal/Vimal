@@ -1,0 +1,42 @@
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+class shoppingcart
+{
+	public:
+	vector<string>items;
+	vector<double>prices;
+	void additem(string itemname,double itemprice)
+	{
+		items.push_back(itemname);
+		prices.push_back(itemprice);
+		cout<<"items added the cart"<<itemname<<"(Rs."<<itemprice<<")";
+	}
+	double calculatetotal()
+	{
+		double total=0.0;
+		for(double i=0;i<prices.size();i++)
+		{
+			total+=prices[i];
+		}
+		return total;
+	}
+	void displaycart()
+	{
+		cout<<"shopping cart content:"<<endl;
+		for(int i=0;i<items.size();i++)
+		{
+			cout<<items[i]<<"is Rs."<<prices[i]<<endl;
+		}
+		cout<<"total:Rs."<<calculatetotal()<<endl;
+	}
+};
+int main()
+{
+	shoppingcart mycart;
+	mycart.additem("laptop",1200.0);
+	mycart.additem("headphones",150);
+	mycart.displaycart();
+	return 0;
+}

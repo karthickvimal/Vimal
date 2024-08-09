@@ -1,0 +1,21 @@
+#include<stdio.h>
+int main()
+{
+	int a=0,b=0,i;
+	char str1[100]="hi";
+	char str2[10]="howareyou";
+	char ans[100]=" ";
+	while(str1[a]!='\0')
+	{
+		ans[i]=str1[a];
+		a++;
+		i++;
+	}
+	while(str2[b]!='\0')
+	{
+		ans[i]=str2[b];
+		b++;
+		i++;
+	}
+	printf("%s",ans);
+}
